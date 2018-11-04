@@ -15,6 +15,7 @@ class Warshall
     int B[10][10];
 
     public:
+        Warshall();
         void ingresar();
         void nodointer();
         void floid();

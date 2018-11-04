@@ -1,6 +1,6 @@
 #include "warshall.h"
 
-Warshall::warshall()
+Warshall::Warshall()
 {
 
 }
