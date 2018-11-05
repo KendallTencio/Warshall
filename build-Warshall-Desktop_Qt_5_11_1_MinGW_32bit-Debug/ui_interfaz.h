@@ -11,8 +11,12 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -22,25 +26,84 @@ QT_BEGIN_NAMESPACE
 class Ui_interfaz
 {
 public:
+    QWidget *centralWidget;
+    QLineEdit *numNodosText;
+    QLineEdit *vertice1Text;
+    QLineEdit *vertice2Text;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QPushButton *botonGenerar;
+    QFrame *line;
+    QFrame *line_2;
+    QFrame *line_3;
+    QPushButton *botonIrDeVerticeAVertice;
+    QLabel *label_4;
+    QLineEdit *numAIngresarText;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QWidget *centralWidget;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *interfaz)
     {
         if (interfaz->objectName().isEmpty())
             interfaz->setObjectName(QStringLiteral("interfaz"));
-        interfaz->resize(400, 300);
+        interfaz->resize(583, 456);
+        centralWidget = new QWidget(interfaz);
+        centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        numNodosText = new QLineEdit(centralWidget);
+        numNodosText->setObjectName(QStringLiteral("numNodosText"));
+        numNodosText->setGeometry(QRect(110, 320, 31, 20));
+        vertice1Text = new QLineEdit(centralWidget);
+        vertice1Text->setObjectName(QStringLiteral("vertice1Text"));
+        vertice1Text->setGeometry(QRect(280, 340, 31, 20));
+        vertice2Text = new QLineEdit(centralWidget);
+        vertice2Text->setObjectName(QStringLiteral("vertice2Text"));
+        vertice2Text->setGeometry(QRect(340, 340, 31, 20));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(10, 320, 91, 20));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(320, 340, 16, 16));
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(200, 340, 81, 20));
+        botonGenerar = new QPushButton(centralWidget);
+        botonGenerar->setObjectName(QStringLiteral("botonGenerar"));
+        botonGenerar->setGeometry(QRect(60, 370, 75, 23));
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setGeometry(QRect(0, 290, 581, 16));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        line_2 = new QFrame(centralWidget);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setGeometry(QRect(170, 330, 20, 71));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+        line_3 = new QFrame(centralWidget);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setGeometry(QRect(410, 330, 20, 71));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+        botonIrDeVerticeAVertice = new QPushButton(centralWidget);
+        botonIrDeVerticeAVertice->setObjectName(QStringLiteral("botonIrDeVerticeAVertice"));
+        botonIrDeVerticeAVertice->setGeometry(QRect(250, 370, 75, 23));
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(10, 340, 91, 16));
+        numAIngresarText = new QLineEdit(centralWidget);
+        numAIngresarText->setObjectName(QStringLiteral("numAIngresarText"));
+        numAIngresarText->setGeometry(QRect(110, 340, 31, 20));
+        interfaz->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(interfaz);
         menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 583, 18));
         interfaz->setMenuBar(menuBar);
         mainToolBar = new QToolBar(interfaz);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        interfaz->addToolBar(mainToolBar);
-        centralWidget = new QWidget(interfaz);
-        centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        interfaz->setCentralWidget(centralWidget);
+        interfaz->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(interfaz);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         interfaz->setStatusBar(statusBar);
@@ -53,6 +116,12 @@ public:
     void retranslateUi(QMainWindow *interfaz)
     {
         interfaz->setWindowTitle(QApplication::translate("interfaz", "interfaz", nullptr));
+        label->setText(QApplication::translate("interfaz", "N\303\272mero de nodos", nullptr));
+        label_2->setText(QApplication::translate("interfaz", "al", nullptr));
+        label_3->setText(QApplication::translate("interfaz", "Ir del v\303\251rtice:", nullptr));
+        botonGenerar->setText(QApplication::translate("interfaz", "Generar", nullptr));
+        botonIrDeVerticeAVertice->setText(QApplication::translate("interfaz", "Ir", nullptr));
+        label_4->setText(QApplication::translate("interfaz", "N\303\272mero a ingresar", nullptr));
     } // retranslateUi
 
 };

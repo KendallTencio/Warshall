@@ -6,8 +6,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     interfaz w;
-    /*Warshall E;
-    E.ingresar();
+    //Warshall warshallApl;
+    /*E.ingresar();
     E.nodointer();
     E.floid();
     E.mostrar1();

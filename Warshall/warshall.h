@@ -16,7 +16,7 @@ class Warshall
 
     public:
         Warshall();
-        void ingresar();
+        void ingresar(int numAIngresar, int tamDeLaMatriz);
         void nodointer();
         void floid();
         void mostrar1();

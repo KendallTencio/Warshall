@@ -2,6 +2,7 @@
 #define INTERFAZ_H
 
 #include <QMainWindow>
+#include "warshall.h"
 
 namespace Ui {
 class interfaz;
@@ -15,8 +16,14 @@ public:
     explicit interfaz(QWidget *parent = 0);
     ~interfaz();
 
+private slots:
+    void on_botonGenerar_clicked();
+
+    void on_botonIrDeVerticeAVertice_clicked();
+
 private:
     Ui::interfaz *ui;
+    Warshall warshallApl;
 };
 
 #endif // INTERFAZ_H
