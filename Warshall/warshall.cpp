@@ -11,10 +11,10 @@ void Warshall::ingresar(int numAIngresar, int tamDeLaMatriz)
     int i,j;
     for(i=1;i<=tamDeLaMatriz;i++)
         for(j=1;j<=tamDeLaMatriz;j++){
-            cout<<"Ingrese número en posición de la matriz de ["<<i<<"]["<<j<<"] :";
+            cout<<"Ingrese numero en posicion de la matriz de ["<<i<<"]["<<j<<"] :"<<endl;
             A[i][j] = numAIngresar;
-            cout<<"Numero ingresado: "<<numAIngresar;
-            break;        }
+            cout<<"Numero ingresado: "<<numAIngresar<<endl;
+        }
 }
 
 void Warshall::nodointer()
