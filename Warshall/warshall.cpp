@@ -1,18 +1,23 @@
 #include "warshall.h"
 
+#include <QMainWindow>
+
+//Código fuertemente influenciado y basado en el encontrado en: https://xcodigoinformatico.blogspot.com/2012/09/probado-en-codeblocks-y-dev-cpp-como.html
+
 Warshall::Warshall()
 {
 
 }
 
-string Warshall::ingresar(int numAIngresar, int tamDeLaMatriz)
+string Warshall::generarMatrizVacia(int tamDeLaMatriz)
 {
-    string resultado = "Ingrese numero de nodos: ";
+    string resultado = "Construyendo matrices...\n";
     cout<<"Ingrese numero de nodos: ";
+    int numAIngresar;
     int i,j;
     tamanioMatriz = tamDeLaMatriz;
 
-    resultado += "Reservando memoria para matrices...";
+    resultado += "Reservando memoria para matrices...\n";
     //Reservando la memoria para la matriz dinámica
     this->matrizWarshall = new int*[tamDeLaMatriz];
     for(i=0;i<tamDeLaMatriz;i++)
@@ -29,7 +34,9 @@ string Warshall::ingresar(int numAIngresar, int tamDeLaMatriz)
 
     for(i=0;i<tamDeLaMatriz;i++)
         for(j=0;j<tamDeLaMatriz;j++){
-            resultado += "Numero ingresado en posicion [i][j] : numAIngresar";
+            //MessageBoxA(("¿Guardar el fichero?","Guardar como",MB_OK) == IDOK);
+            numAIngresar = rand() % 100;
+            resultado += "Numero ingresado en posicion ["+to_string(i)+"]["+to_string(j)+"] : "+to_string(numAIngresar)+"\n";
             cout<<"Ingrese numero en posicion de la matriz de ["<<i<<"]["<<j<<"] :"<<endl;
             *(*(this->matrizWarshall+i)+j) = numAIngresar;
             cout<<"Numero ingresado: "<<numAIngresar<<endl;
@@ -47,6 +54,19 @@ void Warshall::ingresar(int numAIngresar)
             *(*(this->matrizWarshall+i)+j) = numAIngresar;
             cout<<"Numero ingresado: "<<numAIngresar<<endl;
         }
+}
+
+string Warshall::dibujarMatriz(){
+    string matrizString = "";
+    int j, i;
+    for(i=0;i<this->tamanioMatriz;i++){
+        matrizString += "\n";
+        for(j=0;j<this->tamanioMatriz;j++)
+            matrizString += "|"+to_string(*(*(this->matrizWarshall+i)+j))+"|";
+    //matrizString += "|";
+    }
+    return matrizString;
+
 }
 
 void Warshall::nodointer()
@@ -94,8 +114,8 @@ void Warshall::mostrar1()
 {
     int i,j;
     cout<<"Imprime distancias o pesos optimo: "<<endl;
-    for(i=1;i<=this->tamanioMatriz;i++){
-        for(j=1;j<=this->tamanioMatriz;j++)
+    for(i=0;i<this->tamanioMatriz;i++){
+        for(j=0;j<this->tamanioMatriz;j++)
         {
             cout<<*(*(this->matrizWarshall+i)+j);
         }
@@ -107,9 +127,9 @@ void Warshall::mostrar2()
 {
     int i,j;
     cout<<"Imprime matriz intermedios: "<<endl;
-    for(i=1;i<=this->tamanioMatriz;i++)
+    for(i=0;i<this->tamanioMatriz;i++)
     {
-        for(j=1;j<=this->tamanioMatriz;j++)
+        for(j=0;j<this->tamanioMatriz;j++)
         {
             cout<<*(*(this->matrizWarshall2+i)+j);
         }
@@ -119,7 +139,7 @@ void Warshall::mostrar2()
 
 void Warshall::preguntar(int vertice1, int vertice2)
 {
-    cout<<"Del vertice: "<<vertice1<<endl;
+    cout<<"\nDel vertice: "<<vertice1<<endl;
     cout<<"Al vertice: "<<vertice2<<endl;
     if(vertice1==0 || vertice2==0 || vertice1==vertice2)
         cout<<"Distancia minima es 0";

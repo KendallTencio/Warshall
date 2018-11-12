@@ -2,6 +2,7 @@
 #define WARSHALL_H
 
 #include<iostream>
+#include<windows.h>
 #include<conio.h>
 
 using namespace std;
@@ -20,12 +21,13 @@ class Warshall
     public:
         Warshall();
         void ingresar(int numAIngresar);
-        string ingresar(int numAIngresar, int tamDeLaMatriz);
+        string generarMatrizVacia(int tamDeLaMatriz);
         void nodointer();
         void algoritWarshall();
         void mostrar1();
         void mostrar2();
         void preguntar(int vertice1, int vertice2);
+        string dibujarMatriz();
         void setVect(int indice, int numSet);
         void setVect2(int indice, int numSet);
         int getVect(int indice);
