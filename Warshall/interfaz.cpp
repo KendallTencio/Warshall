@@ -17,7 +17,9 @@ void interfaz::on_botonGenerar_clicked()
 {
     int numNodo = ui->numNodosText->text().toInt();
     int numAIngresar = ui->numAIngresarText->text().toInt();
-    warshallApl.ingresar(numAIngresar, numNodo);
+    string strResultado = warshallApl.ingresar(numAIngresar, numNodo);
+    QString resultadosTexto = QString::fromStdString(strResultado);
+    ui->pantallaResultados->setPlainText(resultadosTexto);
 }
 
 void interfaz::on_botonIrDeVerticeAVertice_clicked()

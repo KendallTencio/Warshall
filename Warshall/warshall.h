@@ -20,13 +20,16 @@ class Warshall
     public:
         Warshall();
         void ingresar(int numAIngresar);
-        void ingresar(int numAIngresar, int tamDeLaMatriz);
+        string ingresar(int numAIngresar, int tamDeLaMatriz);
         void nodointer();
         void algoritWarshall();
         void mostrar1();
         void mostrar2();
         void preguntar(int vertice1, int vertice2);
-
+        void setVect(int indice, int numSet);
+        void setVect2(int indice, int numSet);
+        int getVect(int indice);
+        int getVect2(int indice);
 };
 
 #endif // WARSHALL_H

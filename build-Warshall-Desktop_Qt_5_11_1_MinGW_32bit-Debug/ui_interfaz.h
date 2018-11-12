@@ -16,6 +16,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -41,6 +42,7 @@ public:
     QLabel *label_4;
     QLineEdit *numAIngresarText;
     QPushButton *botonIngresar;
+    QPlainTextEdit *pantallaResultados;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -100,6 +102,9 @@ public:
         botonIngresar = new QPushButton(centralWidget);
         botonIngresar->setObjectName(QStringLiteral("botonIngresar"));
         botonIngresar->setGeometry(QRect(230, 360, 75, 23));
+        pantallaResultados = new QPlainTextEdit(centralWidget);
+        pantallaResultados->setObjectName(QStringLiteral("pantallaResultados"));
+        pantallaResultados->setGeometry(QRect(30, 20, 531, 251));
         interfaz->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(interfaz);
         menuBar->setObjectName(QStringLiteral("menuBar"));
