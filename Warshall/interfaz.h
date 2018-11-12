@@ -21,6 +21,8 @@ private slots:
 
     void on_botonIrDeVerticeAVertice_clicked();
 
+    void on_botonIngresar_clicked();
+
 private:
     Ui::interfaz *ui;
     Warshall warshallApl;

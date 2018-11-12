@@ -17,10 +17,20 @@ void interfaz::on_botonGenerar_clicked()
 {
     int numNodo = ui->numNodosText->text().toInt();
     int numAIngresar = ui->numAIngresarText->text().toInt();
-    warshallApl.ingresar(numAIngresar,numNodo);
+    warshallApl.ingresar(numAIngresar, numNodo);
 }
 
 void interfaz::on_botonIrDeVerticeAVertice_clicked()
 {
+    int vertice1 = ui->vertice1Text->text().toInt();
+    int vertice2 = ui->vertice2Text->text().toInt() ;
+    warshallApl.preguntar(vertice1 , vertice2);
+}
 
+void interfaz::on_botonIngresar_clicked()
+{
+    int numAIngresar = ui->numAIngresarText->text().toInt();
+    warshallApl.ingresar(numAIngresar);
+    warshallApl.nodointer();
+    warshallApl.algoritWarshall();
 }

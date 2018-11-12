@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         interfaz.cpp \
-    warshall.cpp
+    warshall.cpp \
+    Threads.cpp
 
 HEADERS += \
         interfaz.h \
-    warshall.h
+    warshall.h \
+    Threads.h
 
 FORMS += \
         interfaz.ui
