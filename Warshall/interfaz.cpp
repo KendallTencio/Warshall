@@ -30,8 +30,11 @@ void interfaz::on_botonIrDeVerticeAVertice_clicked()
     warshallApl.nodointer();
     warshallApl.algoritWarshall();
     warshallApl.mostrar1();
-    warshallApl.mostrar2();
-    warshallApl.preguntar(vertice1 , vertice2);
+    string strResultado = warshallApl.dibujarMatriz();
+    strResultado += "\n" + warshallApl.mostrar2();
+    strResultado += "\n" + warshallApl.preguntar(vertice1 , vertice2);
+    QString resultadosTexto = QString::fromStdString(strResultado);
+    ui->pantallaResultados->setPlainText(resultadosTexto);
 }
 
 void interfaz::on_botonIngresar_clicked()

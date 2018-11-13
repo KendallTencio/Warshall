@@ -25,8 +25,8 @@ class Warshall
         void nodointer();
         void algoritWarshall();
         void mostrar1();
-        void mostrar2();
-        void preguntar(int vertice1, int vertice2);
+        string mostrar2();
+        string preguntar(int vertice1, int vertice2);
         string dibujarMatriz();
         void setVect(int indice, int numSet);
         void setVect2(int indice, int numSet);
