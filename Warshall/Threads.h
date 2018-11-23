@@ -10,6 +10,7 @@ class Threads
 public:
     Threads();
     int ejercerHilos();
+    int warshallFloydThreads(int tamanioMatriz, int **matrizWarshall);
     void DisplayMessage (HANDLE hScreen, char *ThreadName, int Data, int Count);
     //DWORD WINAPI Thread_no_1( LPVOID lpParam );
     //DWORD WINAPI Thread_no_2( LPVOID lpParam );

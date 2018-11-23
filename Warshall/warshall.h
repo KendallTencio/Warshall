@@ -20,11 +20,14 @@ class Warshall
 
     public:
         Warshall();
-        void ingresar(int numAIngresar);
         string generarMatrizVacia(int tamDeLaMatriz);
+        string generarMatrizLista();
+        string generarMatrizConIngresos(int tamDeLaMatriz, int cadenaDeNumero);
         void nodointer();
+        void warshallFloyd();
+        void warshallFloydThreads();
         void algoritWarshall();
-        void mostrar1();
+        string mostrar1();
         string mostrar2();
         string preguntar(int vertice1, int vertice2);
         string dibujarMatriz();

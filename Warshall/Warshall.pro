@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         interfaz.cpp \
     warshall.cpp \
-    Threads.cpp
+    Threads.cpp \
+    hilo.cpp
 
 HEADERS += \
         interfaz.h \
     warshall.h \
-    Threads.h
+    Threads.h \
+    hilo.h
 
 FORMS += \
         interfaz.ui

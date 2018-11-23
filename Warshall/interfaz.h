@@ -23,6 +23,8 @@ private slots:
 
     void on_botonIngresar_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::interfaz *ui;
     Warshall warshallApl;

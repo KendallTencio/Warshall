@@ -80,78 +80,66 @@ DWORD WINAPI Thread_no_2( LPVOID lpParam )
     return 0;
 }
 
+int Threads::warshallFloydThreads(int tamanioMatriz, int **matrizWarshall)
+{
+    int i, j, k;
+    for (k = 0; k < tamanioMatriz; k++)
+    {
+        for (i = 0; i < tamanioMatriz; i++)
+            for (j = 0; j < tamanioMatriz; j++)
+                if ((*(*(matrizWarshall+i)+k) * *(*(matrizWarshall+k)+j) != 0) && (i != j))
+                    if (*(*(matrizWarshall+i)+k) + *(*(matrizWarshall+k)+j) < *(*(matrizWarshall+i)+j) || (*(*(matrizWarshall+i)+j) == 0))
+                        *(*(matrizWarshall+i)+j) = *(*(matrizWarshall+i)+k) + *(*(matrizWarshall+k)+j);
+        for (i = 0; i < tamanioMatriz; i++)
+        {
+            cout<<"\nMinimum Cost With Respect to Node:"<<i<<endl;
+            for (j = 0; j < tamanioMatriz; j++)
+                cout<<*(*(matrizWarshall+i)+j)<<"\t";
+        }
+    }
+    return **matrizWarshall;
+}
 
 int Threads::ejercerHilos()
 {
-    // Dato para el hilo 1
-    int Data_Of_Thread_1 = 1;
-    // Dato para el hilo 2
-    int Data_Of_Thread_2 = 2;
+        // Dato para el hilo 1
+        int Data_Of_Thread_1 = 1;
+        // Dato para el hilo 2
+        int Data_Of_Thread_2 = 2;
 
-    // Variable para el handle para el hilo 1
-    HANDLE Handle_Of_Thread_1 = 0;
-    // Variable para el handle para el hilo 2
-    HANDLE Handle_Of_Thread_2 = 0;
+        // Variable para el handle para el hilo 1
+        HANDLE Handle_Of_Thread_1 = 0;
+        // Variable para el handle para el hilo 2
+        HANDLE Handle_Of_Thread_2 = 0;
 
-    // Arreglo con los handle de los hilos
-    HANDLE Array_Of_Thread_Handles[2];
+        // Arreglo con los handle de los hilos
+        HANDLE Array_Of_Thread_Handles[2];
 
-    // Crea el hilo 1.
-    Handle_Of_Thread_1 = CreateThread( NULL, 0,
-           Thread_no_1, &Data_Of_Thread_1, 0, NULL);
-    if ( Handle_Of_Thread_1 == NULL)
-        ExitProcess(Data_Of_Thread_1);
+        // Crea el hilo 1.
+        Handle_Of_Thread_1 = CreateThread( NULL, 0,
+            Thread_no_1, &Data_Of_Thread_1, 0, NULL);
+        if ( Handle_Of_Thread_1 == NULL)
+            ExitProcess(Data_Of_Thread_1);
 
-    // Crea el hilo 2.
-    Handle_Of_Thread_2 = CreateThread( NULL, 0,
-           Thread_no_2, &Data_Of_Thread_2, 0, NULL);
-    if ( Handle_Of_Thread_2 == NULL)
-        ExitProcess(Data_Of_Thread_2);
+        // Crea el hilo 2.
+        Handle_Of_Thread_2 = CreateThread( NULL, 0,
+            Thread_no_2, &Data_Of_Thread_2, 0, NULL);
+        if ( Handle_Of_Thread_2 == NULL)
+            ExitProcess(Data_Of_Thread_2);
 
-    // Guarda los handle en el arreglo de handles
-    Array_Of_Thread_Handles[0] = Handle_Of_Thread_1;
-    Array_Of_Thread_Handles[1] = Handle_Of_Thread_2;
+        // Guarda los handle en el arreglo de handles
+        Array_Of_Thread_Handles[0] = Handle_Of_Thread_1;
+        Array_Of_Thread_Handles[1] = Handle_Of_Thread_2;
 
-    // Esperando que terminen los hilos
-    WaitForMultipleObjects( 2,
-        Array_Of_Thread_Handles, TRUE, INFINITE);
 
-    cout<<("Todos los hilos ejecutados \nCerrando... \n");
+        // Esperando que terminen los hilos
+        WaitForMultipleObjects( 2,
+            Array_Of_Thread_Handles, TRUE, INFINITE);
 
-    // Cierra los handle cuando se ha completado el proceso del hilo
-    CloseHandle(Handle_Of_Thread_1);
-    CloseHandle(Handle_Of_Thread_2);
+        cout<<("Todos los hilos ejecutados \nCerrando... \n");
 
+        // Cierra los handle cuando se ha completado el proceso del hilo
+        CloseHandle(Handle_Of_Thread_1);
+        CloseHandle(Handle_Of_Thread_2);
     return 0;
 }
-/*
-void main()
-{
-    // Dato para el hilo 1
-    int Data_Of_Thread_1 = 1;
-
-    // Variable para el handle para el hilo 1
-    HANDLE Handle_Of_Thread_1 = 0;
-
-    // Arreglo con los handle de los hilos
-    HANDLE Array_Of_Thread_Handles[3];
-
-    // Crea el hilo 1.
-    Handle_Of_Thread_1 = CreateThread( NULL, 0,
-           Thread_no_1, &Data_Of_Thread_1, 0, NULL);
-    if ( Handle_Of_Thread_1 == NULL)
-        ExitProcess(Data_Of_Thread_1);
-
-    // Guarda los handle en el arreglo de handles
-    Array_Of_Thread_Handles[0] = Handle_Of_Thread_1;
-
-    // Esperando que terminen los hilos
-    WaitForMultipleObjects( 3,
-        Array_Of_Thread_Handles, TRUE, INFINITE);
-
-    cout<<("Todos los hilos ejecutados \nCerrando... \n");
-
-    // Cierra los handle cuando se ha completado el proceso del hilo
-    CloseHandle(Handle_Of_Thread_1);
-}
-*/
