@@ -28,16 +28,16 @@ void interfaz::on_botonIrDeVerticeAVertice_clicked()
     pthread_t thread1, thread2;
 
     string strResultado = "Matriz Original: \n" + warshallApl.dibujarMatriz();
-    //warshallApl.nodointer();
-    //warshallApl.warshallFloyd();
-    pthread_create(&thread1, NULL, warshallApl.nodointer() , NULL);
-    pthread_create(&thread2, NULL,  warshallApl.warshallFloyd(), NULL);
+    warshallApl.nodointer();
+    warshallApl.warshallFloyd();
+    //pthread_create(&thread1, NULL, warshallApl.nodointer() , NULL);
+    //pthread_create(&thread2, NULL,  warshallApl.warshallFloyd(), NULL);
     strResultado += "\n\nMatriz Final: \n" + warshallApl.mostrar1();
     QString resultadosTexto = QString::fromStdString(strResultado);
     ui->pantallaResultados->setPlainText(resultadosTexto);
 
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
+    //pthread_join(thread1, NULL);
+    //pthread_join(thread2, NULL);
 }
 
 void interfaz::on_botonIngresar_clicked()
