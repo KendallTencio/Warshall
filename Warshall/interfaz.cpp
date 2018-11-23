@@ -1,5 +1,6 @@
 #include "interfaz.h"
-#include <pthread.h>
+#include <thread>
+#include <ctime>
 #include "ui_interfaz.h"
 
 interfaz::interfaz(QWidget *parent) :
@@ -25,19 +26,41 @@ void interfaz::on_botonGenerar_clicked()
 
 void interfaz::on_botonIrDeVerticeAVertice_clicked()
 {
-    pthread_t thread1, thread2;
-
     string strResultado = "Matriz Original: \n" + warshallApl.dibujarMatriz();
-    warshallApl.nodointer();
-    warshallApl.warshallFloyd();
-    //pthread_create(&thread1, NULL, warshallApl.nodointer() , NULL);
-    //pthread_create(&thread2, NULL,  warshallApl.warshallFloyd(), NULL);
+    unsigned t0, t1;
+
+    if(ui->radioButton->isChecked())
+    {
+        //EJECUCIÓN DE LOS HILOS
+        strResultado += "\n\nEjecutando hilos paralelamente...";
+        t0 = clock();
+
+        std::thread first(&Warshall::nodointer, warshallApl);   //  Hilo para la función nodointer
+        std::thread second(&Warshall::algoritWarshall, warshallApl);  // Hilo para la función algoritWarshall
+
+        // sincronizando hilos:
+        first.join();                // Se detienen cuando los hilos terminan
+        second.join();
+
+        t1 = clock();
+        double time = (double(t1-t0)/CLOCKS_PER_SEC);
+        strResultado += "\nTiempo transcurrido:" + to_string(time);
+        strResultado += "\n¡Hilos completados!";
+
+        //FINALIZACIÓN DE HILOS
+    }
+    else
+    {
+        t0 = clock();
+        warshallApl.nodointer();
+        warshallApl.warshallFloyd();
+        t1 = clock();
+        double time = (double(t1-t0)/CLOCKS_PER_SEC);
+        strResultado += "\nTiempo transcurrido:" + to_string(time);
+    }
     strResultado += "\n\nMatriz Final: \n" + warshallApl.mostrar1();
     QString resultadosTexto = QString::fromStdString(strResultado);
     ui->pantallaResultados->setPlainText(resultadosTexto);
-
-    //pthread_join(thread1, NULL);
-    //pthread_join(thread2, NULL);
 }
 
 void interfaz::on_botonIngresar_clicked()

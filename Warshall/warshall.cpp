@@ -1,6 +1,7 @@
 #include "warshall.h"
 #include <QMainWindow>
 
+using namespace std;
 //Código fuertemente influenciado y basado en el algoritmo encontrado en: https://www.sanfoundry.com/cpp-program-implement-floyd-warshall-algorithm/
 
 Warshall::Warshall()
@@ -186,8 +187,16 @@ void Warshall::warshallFloyd()
 
 void Warshall::warshallFloydThreads()
 {
-  //  Threads hilosPrueba;
- //   this->matrizWarshall = hilosPrueba.warshallFloydThreads(this->tamanioMatriz, this->matrizWarshall);
+    /*std::thread first(nodointer);     // spawn new thread that calls foo()
+    std::thread second(algoritWarshall);  // spawn new thread that calls bar(0)
+
+    cout << "main, foo and bar now execute concurrently...\n";
+
+      // synchronize threads:
+    first.join();                // pauses until first finishes
+    second.join();               // pauses until second finishes
+
+    cout << "foo and bar completed.\n";*/
 }
 
 void Warshall::algoritWarshall()
@@ -294,4 +303,8 @@ int Warshall::getVect(int indice)
 int Warshall::getVect2(int indice)
 {
     return this->vect2[indice];
+}
+
+Warshall::~Warshall(){
+
 }

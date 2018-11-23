@@ -35,6 +35,7 @@ class Warshall
         void setVect2(int indice, int numSet);
         int getVect(int indice);
         int getVect2(int indice);
+        ~Warshall();
 };
 
 #endif // WARSHALL_H
